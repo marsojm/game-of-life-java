@@ -24,6 +24,10 @@ public class Grid {
             new Coord(1,1)
     };
 
+    public int[][] getGrid() {
+        return this.grid;
+    }
+
     private static class Coord {
         private final int row;
         private final int col;
