@@ -109,7 +109,7 @@ public class Grid {
 
     public Integer getIfIsWithinBoundaries(int row, int col) {
 
-        if (row >= 0 && row < this.columnCount && col >= 0 && col < this.rowCount) {
+        if (row >= 0 && row < this.rowCount && col >= 0 && col < this.columnCount) {
             return grid[row][col];
         }
 

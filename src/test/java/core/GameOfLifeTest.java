@@ -7,11 +7,6 @@ import static org.junit.Assert.*;
 public class GameOfLifeTest {
 
     @Test
-    public void testShouldBeAbleToCreateNewGame() {
-        GameOfLife game = new GameOfLife(new Grid(new int[][] {{1}}));
-    }
-
-    @Test
     public void testShouldGetEmptyGridFromEmptyGrid() {
         Grid input = new Grid(new int[][] {
             {0,0,0},
@@ -19,8 +14,7 @@ public class GameOfLifeTest {
             {0,0,0}
         });
 
-        GameOfLife game = new GameOfLife(input);
-        Grid nextState = game.nextState();
+        Grid nextState = GameOfLife.nextState(input);
 
         assertEquals(input, nextState);
     }
@@ -39,8 +33,47 @@ public class GameOfLifeTest {
                 {0,0,0}
         });
 
-        GameOfLife game = new GameOfLife(input);
-        Grid nextState = game.nextState();
+        Grid nextState = GameOfLife.nextState(input);
+
+        assertEquals(expected, nextState);
+    }
+
+    @Test
+    public void testShouldAcceptGridWithMoreRowsThanCols() {
+        Grid input = new Grid(new int[][] {
+                {0,0,0},
+                {0,0,0},
+                {0,0,0},
+                {0,0,0}
+        });
+
+        Grid expected = new Grid(new int[][] {
+                {0,0,0},
+                {0,0,0},
+                {0,0,0},
+                {0,0,0}
+        });
+
+        Grid nextState = GameOfLife.nextState(input);
+
+        assertEquals(expected, nextState);
+    }
+
+    @Test
+    public void testShouldAcceptGridWithMoreColsThanrow() {
+        Grid input = new Grid(new int[][] {
+                {0,0,0,0},
+                {0,0,0,0},
+                {0,0,0,0}
+        });
+
+        Grid expected = new Grid(new int[][] {
+                {0,0,0,0},
+                {0,0,0,0},
+                {0,0,0,0}
+        });
+
+        Grid nextState = GameOfLife.nextState(input);
 
         assertEquals(expected, nextState);
     }
@@ -53,8 +86,7 @@ public class GameOfLifeTest {
                 {0,1,0}
         });
 
-        GameOfLife game = new GameOfLife(input);
-        Grid nextState = game.nextState();
+        Grid nextState = GameOfLife.nextState(input);
 
         assertEquals(input, nextState);
     }
@@ -79,9 +111,9 @@ public class GameOfLifeTest {
                 {0,0,0}
         });
 
-        GameOfLife game = new GameOfLife(input);
+        Grid nextState = input;
         for (int i = 0; i < 10; i++) {
-            Grid nextState = game.nextState();
+            nextState = GameOfLife.nextState(nextState);
             Grid expected = i % 2 == 0 ? expectedState1 : expectedState2;
 
             assertEquals(expected, nextState);

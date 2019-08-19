@@ -126,6 +126,39 @@ public class GridTest {
         }
     }
 
+    @Test
+    public void testShouldFindNeighboursWhenRowCountIsBiggerThanColumnCount() {
+        Grid grid = new Grid(new int[][]{
+                {0,1,0},
+                {1,0,1},
+                {0,1,0},
+                {1,1,1}
+        });
+
+        List<Integer> neighbours = grid.getNeighbours(2,1);
+        long alive = count(neighbours, ALIVE);
+        long dead = count(neighbours, DEAD);
+
+        assertEquals(5, alive);
+        assertEquals(3, dead);
+    }
+
+    @Test
+    public void testShouldFindNeighboursWhenColCountIsBiggerThanRowCount() {
+        Grid grid = new Grid(new int[][]{
+                {0,1,0,0},
+                {1,0,1,0},
+                {0,1,0,1}
+        });
+
+        List<Integer> neighbours = grid.getNeighbours(1,2);
+        long alive = count(neighbours, ALIVE);
+        long dead = count(neighbours, DEAD);
+
+        assertEquals(3, alive);
+        assertEquals(5, dead);
+    }
+
     private int[] coord(int x, int y) {
         return new int[] {x ,y };
     }

@@ -15,8 +15,7 @@ public class GameOfLifeController {
 
         Grid currentState = mapToCoreObj(grid);
 
-        GameOfLife game = new GameOfLife(currentState);
-        Grid nextState = game.nextState();
+        Grid nextState = GameOfLife.nextState(currentState);
 
         return mapToDto(nextState);
     }
