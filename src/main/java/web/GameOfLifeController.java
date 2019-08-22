@@ -20,6 +20,11 @@ public class GameOfLifeController {
         return mapToDto(nextState);
     }
 
+    @RequestMapping("/check")
+    public String check() {
+        return "OK";
+    }
+
     private GridDto mapToDto(Grid grid) {
         return new GridDto(grid.getGrid());
     }
