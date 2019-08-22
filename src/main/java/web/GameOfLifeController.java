@@ -22,7 +22,7 @@ public class GameOfLifeController {
 
     @RequestMapping("/check")
     public String check() {
-        return "OK";
+        return "Healthy as a goat!";
     }
 
     private GridDto mapToDto(Grid grid) {
