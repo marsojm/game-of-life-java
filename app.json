@@ -1,0 +1,22 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/gradle"
+    }
+  ],
+  "description": "",
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "game-of-life-java",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
